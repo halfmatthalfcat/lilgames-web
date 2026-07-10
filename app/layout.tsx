@@ -39,6 +39,18 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Lil Games",
+  url: "https://lilgames.io",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Chicago",
+    addressRegion: "IL",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -50,6 +62,10 @@ export default function RootLayout({
       className={`${notoSans.variable} ${notoEmoji.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         {children}
         <Script
           src="https://plausible.io/js/pa-WA-kdE-TQXxdoJWTC1zeq.js"
