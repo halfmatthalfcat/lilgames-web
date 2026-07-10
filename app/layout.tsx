@@ -14,8 +14,29 @@ const notoEmoji = Noto_Emoji({
 });
 
 export const metadata: Metadata = {
-  title: "Lil Games",
+  metadataBase: new URL("https://lilgames.io"),
+  title: {
+    default: "Lil Games",
+    template: "%s | Lil Games",
+  },
   description: "A new game studio located in Chicago, IL - Coming Soon",
+  openGraph: {
+    title: "Lil Games",
+    description: "A new game studio located in Chicago, IL - Coming Soon",
+    url: "https://lilgames.io",
+    siteName: "Lil Games",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lil Games",
+    description: "A new game studio located in Chicago, IL - Coming Soon",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
