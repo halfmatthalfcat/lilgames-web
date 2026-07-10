@@ -2,13 +2,7 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-export const size = {
-  width: 32,
-  height: 32,
-};
-export const contentType = "image/png";
-
-export default async function Icon() {
+export async function pinchingHandIcon(color: string) {
   const notoEmoji = await readFile(
     join(process.cwd(), "assets/NotoEmoji-PinchingHand.ttf")
   );
@@ -24,14 +18,15 @@ export default async function Icon() {
           justifyContent: "center",
           fontFamily: "Noto Emoji",
           fontSize: 28,
-          color: "#000000",
+          color,
         }}
       >
         🤏
       </div>
     ),
     {
-      ...size,
+      width: 32,
+      height: 32,
       fonts: [
         {
           name: "Noto Emoji",

@@ -37,6 +37,22 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: [
+      {
+        url: "/icon-light",
+        media: "(prefers-color-scheme: light)",
+        type: "image/png",
+        sizes: "32x32",
+      },
+      {
+        url: "/icon-dark",
+        media: "(prefers-color-scheme: dark)",
+        type: "image/png",
+        sizes: "32x32",
+      },
+    ],
+  },
 };
 
 const organizationJsonLd = {
