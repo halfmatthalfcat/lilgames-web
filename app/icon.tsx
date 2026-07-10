@@ -1,4 +1,6 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 
 export const size = {
   width: 32,
@@ -6,7 +8,11 @@ export const size = {
 };
 export const contentType = "image/png";
 
-export default function Icon() {
+export default async function Icon() {
+  const notoEmoji = await readFile(
+    join(process.cwd(), "assets/NotoEmoji-PinchingHand.ttf")
+  );
+
   return new ImageResponse(
     (
       <div
@@ -16,7 +22,9 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          fontFamily: "Noto Emoji",
           fontSize: 28,
+          color: "#000000",
         }}
       >
         🤏
@@ -24,7 +32,14 @@ export default function Icon() {
     ),
     {
       ...size,
-      emoji: "noto",
+      fonts: [
+        {
+          name: "Noto Emoji",
+          data: notoEmoji,
+          style: "normal",
+          weight: 400,
+        },
+      ],
     }
   );
 }
